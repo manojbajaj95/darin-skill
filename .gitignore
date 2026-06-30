@@ -1,0 +1,7 @@
+# Darin skill repo — no product memory here.
+# Darin stores everything under ~/.darin/ (see README).
+
+dist/
+packages/cli/darin-*.tgz
+packages/cli/vendor/
+node_modules/

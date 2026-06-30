@@ -1,0 +1,38 @@
+{
+  "name": "darin",
+  "version": "0.1.0",
+  "description": "Install the Darin PM skill into Cursor, Claude Code, Codex, and other agent harnesses",
+  "license": "Apache-2.0",
+  "type": "module",
+  "bin": {
+    "darin": "./bin/darin.mjs"
+  },
+  "files": [
+    "bin",
+    "lib",
+    "vendor"
+  ],
+  "scripts": {
+    "prepack": "node scripts/prepack.mjs",
+    "prepare": "node scripts/prepack.mjs",
+    "test:install": "node bin/darin.mjs install -y --target /tmp/darin-cli-test"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "darin",
+    "product-management",
+    "cursor",
+    "claude-code",
+    "codex",
+    "agent-skills",
+    "pm"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/manojbajaj95/ai-pm-skill.git",
+    "directory": "packages/cli"
+  },
+  "homepage": "https://getdarin.com"
+}
