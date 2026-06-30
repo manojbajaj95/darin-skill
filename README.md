@@ -122,8 +122,9 @@ Edit `skill/`, then sync harness builds:
 
 ```bash
 node scripts/build.mjs
+node scripts/build.mjs --also-cursor   # local Cursor copy only (not in git)
 node scripts/install.mjs --providers=cursor,claude -y
-cd packages/cli && npm pack   # CLI tarball
+cd packages/cli && npm pack
 ```
 
 ## Release (automated)

@@ -5,7 +5,7 @@
  * Usage:
  *   node scripts/build.mjs
  *   node scripts/build.mjs --providers=cursor,claude-code,codex
- *   node scripts/build.mjs --also-cursor   # also sync dist/cursor → .cursor/skills/darin/
+ *   node scripts/build.mjs --also-cursor   # optional: sync dist/cursor → local .cursor/skills/darin/ (gitignored)
  */
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -48,7 +48,7 @@ function main() {
     console.log(`Built ${PROVIDERS[id].displayName} → ${skillDir}`);
   }
 
-  if (args.alsoCursor || providerIds.length === 0 || providerIds.includes('cursor')) {
+  if (args.alsoCursor) {
     const cursorDir = buildProviderSkill({
       repoRoot: REPO_ROOT,
       provider: PROVIDERS.cursor,

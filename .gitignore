@@ -2,6 +2,7 @@
 # Darin stores everything under ~/.darin/ (see README).
 
 dist/
+.cursor/
 packages/cli/darin-*.tgz
 packages/cli/vendor/
 node_modules/
