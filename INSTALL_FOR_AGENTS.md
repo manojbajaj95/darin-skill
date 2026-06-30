@@ -6,13 +6,16 @@ Read this entire file, then follow the steps in order. Ask the user questions wh
 
 ## What you are installing
 
-**Darin** is a Cursor Agent Skill that acts as a product manager: ingest research, track hypotheses, shape features, and maintain strategy alignment. It is **not** tied to a git repo — one workspace slug (e.g. `acme`) is shared across landing, API, mobile, and monorepo checkouts.
+**Darin** is an agent skill that acts as a product manager: ingest research, track hypotheses, shape features, and maintain strategy alignment. It is **not** tied to a git repo — one workspace slug (e.g. `acme`) is shared across landing, API, mobile, and monorepo checkouts.
 
-If you fetched this file by URL without cloning yet, companion files live in the [darin-agent](https://github.com/) repo:
+**Repo:** [github.com/manojbajaj95/ai-pm-skill](https://github.com/manojbajaj95/ai-pm-skill) · **Website:** [getdarin.com](https://getdarin.com)
+
+If you fetched this file by URL without cloning yet, companion files live in the **ai-pm-skill** repo:
 
 - `INSTALL_FOR_AGENTS.md` — this file (start here)
 - `README.md` — user overview
-- `scripts/install.mjs` — multi-harness installer (Cursor, Claude, Codex, Gemini, …)
+- `packages/cli/` — `npx darin install` npm CLI
+- `scripts/install.mjs` — install from clone
 - `.cursor/skills/darin/` — Cursor deploy (or build from `skill/` via `scripts/build.mjs`)
 
 ## Prerequisites
@@ -30,13 +33,22 @@ node --version
 
 Darin supports **Cursor, Claude Code, Codex CLI, Gemini CLI, GitHub Copilot**, and other Agent Skills harnesses (OpenCode, Pi, Kiro, Qoder, Trae, Rovo Dev). Product memory still lives in `~/.darin/` regardless of harness.
 
-### Option A — Multi-harness install (recommended)
+### Option A — npm CLI (recommended)
 
-From the darin-agent repo root (or after cloning):
+From the user's project root:
 
 ```bash
-git clone <darin-agent-repo-url> /tmp/darin-agent
-cd /tmp/darin-agent
+npx darin@latest install -y
+# or: npx darin install --providers=cursor,claude,codex -y
+```
+
+This installs the skill into detected harness folders and scaffolds `~/.darin/` if needed.
+
+### Option B — Install from repo clone
+
+```bash
+git clone https://github.com/manojbajaj95/ai-pm-skill.git /tmp/ai-pm-skill
+cd /tmp/ai-pm-skill
 node scripts/install.mjs --target /path/to/user-repo --providers=cursor,claude,codex,gemini -y
 ```
 
@@ -52,9 +64,9 @@ node scripts/install.mjs --scope=global --providers=claude,codex -y
 
 **Codex note:** invoke with `$darin` or open `/skills`. Skills live in `.agents/skills/darin/`.
 
-### Option B — Cursor only (legacy)
+### Option C — Cursor only (legacy)
 
-From the darin-agent repo root:
+From the ai-pm-skill repo root:
 
 ```bash
 ./scripts/install-cursor.sh
@@ -67,7 +79,7 @@ mkdir -p /path/to/user-repo/.cursor/skills
 cp -R .cursor/skills/darin /path/to/user-repo/.cursor/skills/
 ```
 
-### Option C — User's repo already contains a Darin skill folder
+### Option D — User's repo already contains a Darin skill folder
 
 Skip copy. Confirm these paths exist for at least one harness:
 
@@ -80,11 +92,11 @@ Skip copy. Confirm these paths exist for at least one harness:
 
 Each harness uses the same scripts under its own `skills/darin/scripts/` path.
 
-### Option D — Install from a git URL (build only)
+### Option E — Install from a git URL (build only)
 
 ```bash
-git clone <darin-agent-repo-url> /tmp/darin-agent
-cd /tmp/darin-agent
+git clone https://github.com/manojbajaj95/ai-pm-skill.git /tmp/ai-pm-skill
+cd /tmp/ai-pm-skill
 node scripts/build.mjs --providers=cursor,claude-code,codex
 # Copy from dist/<provider>/ into the user's project harness folders
 ```

@@ -7,7 +7,7 @@ const PKG_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..'
 /**
  * Resolve skill source root (skill/SKILL.src.md parent).
  * Published package: packages/cli/vendor/
- * Monorepo dev: darin-agent repo root
+ * Monorepo dev: ai-pm-skill repo root
  */
 export function getSkillRepoRoot() {
   const vendorRoot = path.join(PKG_ROOT, 'vendor');

@@ -1,0 +1,17 @@
+{
+  "name": "ai-pm-skill",
+  "private": true,
+  "description": "Darin — AI product manager skill for Cursor, Claude Code, Codex & agent harnesses",
+  "homepage": "https://getdarin.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/manojbajaj95/ai-pm-skill.git"
+  },
+  "bugs": {
+    "url": "https://github.com/manojbajaj95/ai-pm-skill/issues"
+  },
+  "license": "Apache-2.0",
+  "workspaces": [
+    "packages/cli"
+  ]
+}
