@@ -1,0 +1,67 @@
+name: Release
+
+# Publish darin npm package + GitHub Release on version tag.
+#
+# Setup (one-time):
+#   1. npmjs.com → Access Tokens → Granular token
+#      - Packages: darin (read + write)
+#      - Enable "Bypass 2FA for automation" / automation token
+#   2. GitHub repo → Settings → Secrets → Actions → NPM_TOKEN
+#
+# Ship a release:
+#   1. Bump version in packages/cli/package.json
+#   2. git commit -m "chore: release v0.1.1"
+#   3. git tag v0.1.1 && git push origin main --tags
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+  id-token: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Verify tag matches package version
+        run: |
+          PKG_VERSION=$(jq -r .version packages/cli/package.json)
+          TAG_VERSION="${GITHUB_REF_NAME#v}"
+          if [ "$PKG_VERSION" != "$TAG_VERSION" ]; then
+            echo "::error::Tag v${TAG_VERSION} does not match packages/cli/package.json ($PKG_VERSION)"
+            exit 1
+          fi
+          echo "Releasing darin@${PKG_VERSION}"
+
+      - name: Test CLI before publish
+        working-directory: packages/cli
+        run: |
+          node scripts/prepack.mjs
+          node bin/darin.mjs --version
+          mkdir -p /tmp/darin-release-test/.cursor
+          node bin/darin.mjs install -y --target /tmp/darin-release-test --providers=cursor
+          test -f /tmp/darin-release-test/.cursor/skills/darin/SKILL.md
+
+      - name: Publish to npm
+        working-directory: packages/cli
+        run: npm publish --access public --provenance
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
+          name: darin ${{ github.ref_name }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,0 +1,34 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  test-cli:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Build vendor bundle
+        working-directory: packages/cli
+        run: node scripts/prepack.mjs
+
+      - name: CLI version
+        working-directory: packages/cli
+        run: node bin/darin.mjs --version
+
+      - name: Install smoke test
+        working-directory: packages/cli
+        run: |
+          mkdir -p /tmp/darin-ci-test/.cursor
+          node bin/darin.mjs install -y --target /tmp/darin-ci-test --providers=cursor
+          test -f /tmp/darin-ci-test/.cursor/skills/darin/SKILL.md
+
+      - name: Build skill dist
+        run: node scripts/build.mjs --providers=cursor,claude-code,codex

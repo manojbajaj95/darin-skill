@@ -126,6 +126,14 @@ node scripts/install.mjs --providers=cursor,claude -y
 cd packages/cli && npm pack   # CLI tarball
 ```
 
+## Release (npm + GitHub)
+
+1. Bump `packages/cli/package.json` version
+2. Commit and tag: `git tag v0.1.0 && git push origin main --tags`
+3. GitHub Action publishes to [npm](https://www.npmjs.com/package/darin) and creates a GitHub Release
+
+**One-time setup:** add `NPM_TOKEN` secret (npm granular token with publish access to `darin`).
+
 ## Links
 
 - **Product:** [getdarin.com](https://getdarin.com)
