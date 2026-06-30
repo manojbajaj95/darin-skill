@@ -5,7 +5,7 @@
   "license": "Apache-2.0",
   "type": "module",
   "bin": {
-    "darin": "./bin/darin.mjs"
+    "darin": "bin/darin.mjs"
   },
   "files": [
     "bin",
