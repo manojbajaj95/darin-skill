@@ -4,14 +4,14 @@ Quick orientation for AI agents working in this repo.
 
 ## What Darin is
 
-Darin is an AI product-manager **skill** you run inside an AI harness (Cursor, Claude Code, Codex, Gemini, …). It helps small teams capture what they learn and decide what to build — without PM jargon. Five commands: `init`, `ingest`, `plan`, `prioritize`, `review`. User data lives as plain markdown in `~/.darin/` on the user's machine, never in this repo.
+Darin is an AI product-manager **skill** you run inside an AI harness (Cursor, Claude Code, Codex, Gemini, …). It helps small teams capture what they learn and decide what to build — without PM jargon. Commands: `init`, `ingest`, `plan`, `insights`, `prioritize`, `review`. User data lives as plain markdown in `~/.darin/` on the user's machine, never in this repo.
 
 ## Where things are
 
 ```
 skill/            source of truth — edit here
   SKILL.src.md      main skill file (uses {{placeholders}}, expanded at build)
-  reference/        one .md per command (init, ingest, plan, prioritize, review)
+  reference/        one .md per command (init, ingest, plan, insights, prioritize, review) + insights recipes
   templates/        PRODUCT.md, STRATEGY.md, feature-brief.md, hypothesis.md scaffolds
   scripts/          runtime .mjs the skill calls + command-metadata.json
 scripts/          build + install tooling (build.mjs, install.mjs, lib/)

@@ -3,6 +3,7 @@
     "init",
     "ingest",
     "plan",
+    "insights",
     "prioritize",
     "review"
   ],
@@ -20,6 +21,11 @@
     "category": "Plan",
     "description": "Turn a problem or goal into a scoped brief: build now / next / skip",
     "argumentHint": "[feature, problem area, or goal]"
+  },
+  "insights": {
+    "category": "Analyze",
+    "description": "Compare product surface in your codebase to Darin memory — misalignments, gaps, improvements",
+    "argumentHint": "[recipe or natural phrase] — landing · pricing · onboarding · docs · seo"
   },
   "prioritize": {
     "category": "Plan",

@@ -153,6 +153,7 @@ export function ensureWorkspaceScaffold(slug, meta = {}) {
     'ingestion/adhoc',
     'hypotheses',
     'features',
+    'insights',
     'maintenance/log',
   ];
   for (const d of dirs) {

@@ -16,6 +16,7 @@ Then in your harness:
 
 ```
 /darin init
+/darin insights docs    # quick aha — compare README to product memory
 /darin ingest
 /darin plan
 ```
@@ -60,7 +61,8 @@ Product memory lives in `~/.darin/` (markdown, no database) — never in your co
         ├── STRATEGY.md
         ├── source/
         ├── ingestion/
-        └── hypotheses/
+        ├── hypotheses/
+        └── insights/
 ```
 
 ## Links

@@ -1,6 +1,6 @@
 ---
 name: darin
-description: "Use when the user wants product management help: capture customer research, meetings, metrics, or market signals; plan features; prioritize work; or run weekly product reviews. Covers discovery, planning, and roadmap decisions for PMs and founders acting as PM. Not for pure engineering, design-only, or backend tasks unless tied to product decisions."
+description: "Use when the user wants product management help: capture customer research, meetings, metrics, or market signals; plan features; compare product surfaces in the codebase to strategy; prioritize work; or run weekly product reviews. Covers discovery, planning, and roadmap decisions for PMs and founders acting as PM. Not for pure engineering, design-only, or backend tasks unless tied to product decisions."
 argument-hint: "[{{command_hint}}] [target]"
 user-invocable: true
 allowed-tools:
@@ -10,7 +10,7 @@ license: Apache-2.0
 
 Darin is your product manager. Real judgments, evidence-backed plans, committed decisions — not generic AI product theater.
 
-Built for small teams: three things you do all the time (`init`, `ingest`, `plan`), plus `prioritize` and `review` when you need them. Keep the rigor, skip the jargon — always talk to the user in plain language.
+Built for small teams: three things you do all the time (`init`, `ingest`, `plan`), plus `insights`, `prioritize`, and `review` when you need them. Keep the rigor, skip the jargon — always talk to the user in plain language.
 
 ## Examples
 
@@ -18,13 +18,15 @@ Built for small teams: three things you do all the time (`init`, `ingest`, `plan
 - `{{command_prefix}}darin init` — set up your workspace: short interview, write `PRODUCT.md` + `STRATEGY.md` (your north star and goals).
 - `{{command_prefix}}darin ingest notes/interview-acme.md` — file something you learned into memory and note what it might mean.
 - `{{command_prefix}}darin plan invite friction` — turn a problem into a scoped brief: what to build now, what's next, what to skip.
+- `{{command_prefix}}darin insights landing page` — compare landing page source in this repo to your product memory; same for `pricing`, `onboarding`, `docs`, `seo`.
+- `{{command_prefix}}darin insights docs` — quick aha after init: compare README (or other docs) to product memory without customer research yet.
 
 ## Setup
 
 Before proceeding:
 
 1. Run `node {{scripts_path}}/workspace.mjs --json` to resolve the active workspace under `~/.darin/workspaces/<slug>/` (use `--list --json` first if you need to see available workspaces). Then run `node {{scripts_path}}/context.mjs` (pass `--slug` when the user names a product). If context reports `NO_ACTIVE_WORKSPACE` or `NO_PRODUCT_MD`, stop and follow `reference/init.md`.
-2. If the user invoked a sub-command (`init`, `ingest`, `plan`, ...), read `reference/<command>.md` and follow it — each one covers what to load before writing.
+2. If the user invoked a sub-command (`init`, `ingest`, `plan`, `insights`, ...), read `reference/<command>.md` and follow it — each one covers what to load before writing.
 
 ## How Darin works (always apply)
 
@@ -55,7 +57,7 @@ Before proceeding:
 
 1. **No argument**: run `node {{scripts_path}}/context-signals.mjs` once. If `NO_PRODUCT_MD`, you are already in init. Otherwise lead with **2–3 recommended next steps** with one-line reasons from the signals, then the full menu above. Never auto-run a command.
 2. **First word matches a command**: load its reference and follow it. Everything after the command name is the target.
-3. **Intent maps clearly to one command** (e.g. "turn this interview into a feature" → `plan`, "what should I build first" → `prioritize`): load that reference and proceed.
+3. **Intent maps clearly to one command** (e.g. "turn this interview into a feature" → `plan`, "what should I build first" → `prioritize`, "does our landing page match our ICP" → `insights`): load that reference and proceed.
 4. **No clear match**: apply setup and the principles above. Use the full argument as context.
 
 If `init` was invoked as a blocker by another command, finish init, re-run context, then resume the original command and target.
