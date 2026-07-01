@@ -1,17 +1,17 @@
 # Strategy
 
-## North-star metric
+## North star
 
-[One metric + definition]
+[One number that tells you the product is working + how it's defined]
 
-## Current bets
+## What you're focused on
 
-1. [Bet 1]
-2. [Bet 2]
+1. [Focus 1]
+2. [Focus 2]
 
-## Non-goals
+## What you're not doing
 
-- [Explicitly out of scope this quarter]
+- [Explicitly left out this quarter]
 
 ## Constraints
 
@@ -19,4 +19,4 @@
 
 ## Open tensions
 
-- [Strategy vs reality conflicts to resolve]
+- [Where reality and your goals conflict, still to resolve]

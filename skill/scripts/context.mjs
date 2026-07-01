@@ -99,7 +99,7 @@ if (strategy) {
 }
 
 if (hypotheses.length) {
-  console.log('## Active hypotheses\n');
+  console.log('## What you\'re currently betting on\n');
   for (const f of hypotheses) {
     console.log(`- \`${root}/hypotheses/${f}\``);
   }
