@@ -6,7 +6,7 @@ Read this entire file, then follow the steps in order. Ask the user questions wh
 
 ## What you are installing
 
-**Darin** is an agent skill that acts as a product manager: ingest research, track hypotheses, shape features, and maintain strategy alignment. It is **not** tied to a git repo — one workspace slug (e.g. `acme`) is shared across landing, API, mobile, and monorepo checkouts.
+**Darin** is an agent skill that acts as a product manager: ingest research, plan features, generate insights from your codebase, and maintain strategy alignment. It is **not** tied to a git repo — one workspace slug (e.g. `acme`) is shared across landing, API, mobile, and monorepo checkouts.
 
 **Repo:** [github.com/manojbajaj95/darin-skill](https://github.com/manojbajaj95/darin-skill) · **Website:** [getdarin.com](https://getdarin.com)
 
@@ -21,7 +21,7 @@ If you fetched this file by URL without cloning yet, companion files live in the
 ## Prerequisites
 
 - **Node.js 18+** (for workspace scripts and install/build tooling; no npm install in this repo)
-- **An Agent Skills harness** — Cursor, Claude Code, Codex CLI, Gemini CLI, GitHub Copilot, or another [supported target](#install-in-another-project)
+- **An Agent Skills harness** — Cursor, Claude Code, Codex CLI, Gemini CLI, GitHub Copilot, or another [supported target](#other-install-methods)
 
 Verify Node:
 
@@ -31,20 +31,23 @@ node --version
 
 ## Step 1: Install the skill into the user's project
 
-Darin supports **Cursor, Claude Code, Codex CLI, Gemini CLI, GitHub Copilot**, and other Agent Skills harnesses (OpenCode, Pi, Kiro, Qoder, Trae, Rovo Dev). Product memory still lives in `~/.darin/` regardless of harness.
-
-### Option A — npm CLI (recommended)
-
-From the user's project root:
+From the **user's project root**:
 
 ```bash
 npx @getdarin/cli@latest install -y
 # or: npx @getdarin/cli install --providers=cursor,claude,codex -y
 ```
 
-This installs the skill into detected harness folders and scaffolds `~/.darin/` if needed.
+This installs the skill into detected harness folders and scaffolds `~/.darin/` if needed. Darin supports Cursor, Claude Code, Codex CLI, Gemini CLI, GitHub Copilot, and other Agent Skills harnesses. Product memory still lives in `~/.darin/` regardless of harness.
 
-### Option B — Install from repo clone
+**Do not** write product files (`PRODUCT.md`, `STRATEGY.md`, hypotheses) into the code repo. They belong under `~/.darin/workspaces/<slug>/`.
+
+### Other install methods
+
+<details>
+<summary>Install from repo clone, global scope, legacy Cursor copy, existing skill folder, or build from dist</summary>
+
+**Option B — Install from repo clone**
 
 ```bash
 git clone https://github.com/manojbajaj95/darin-skill.git /tmp/darin-skill
@@ -64,7 +67,7 @@ node scripts/install.mjs --scope=global --providers=claude,codex -y
 
 **Codex note:** invoke with `$darin` or open `/skills`. Skills live in `.agents/skills/darin/`.
 
-### Option C — Cursor only (legacy)
+**Option C — Cursor only (legacy)**
 
 From the darin-skill repo root:
 
@@ -79,7 +82,7 @@ mkdir -p /path/to/user-repo/.cursor/skills
 cp -R .cursor/skills/darin /path/to/user-repo/.cursor/skills/
 ```
 
-### Option D — User's repo already contains a Darin skill folder
+**Option D — User's repo already contains a Darin skill folder**
 
 Skip copy. Confirm these paths exist for at least one harness:
 
@@ -92,7 +95,7 @@ Skip copy. Confirm these paths exist for at least one harness:
 
 Each harness uses the same scripts under its own `skills/darin/scripts/` path.
 
-### Option E — Install from a git URL (build only)
+**Option E — Install from a git URL (build only)**
 
 ```bash
 git clone https://github.com/manojbajaj95/darin-skill.git /tmp/darin-skill
@@ -101,7 +104,7 @@ node scripts/build.mjs --providers=cursor,claude-code,codex
 # Copy from dist/<provider>/ into the user's project harness folders
 ```
 
-**Do not** write product files (`PRODUCT.md`, `STRATEGY.md`, hypotheses) into the code repo. They belong under `~/.darin/workspaces/<slug>/`.
+</details>
 
 ## Step 2: List or create a product workspace
 
@@ -143,6 +146,7 @@ This creates `~/.darin/workspaces/acme/`, sets `active_workspace` in `~/.darin/c
     ├── ingestion/{interviews,meetings,market,adhoc}/
     ├── hypotheses/
     ├── features/
+    ├── insights/
     └── maintenance/log/
 ```
 
@@ -219,13 +223,24 @@ Invoke Darin once to confirm the skill loads:
 /darin
 ```
 
-Bare `/darin` should recommend 2–3 next commands based on project signals (e.g. ingest research, shape a feature, run review).
+Bare `/darin` should recommend 2–3 next commands based on project signals (e.g. ingest research, run insights on docs, plan a feature).
 
-Optional follow-up tests:
+**Install is complete when:** skill installed, init interview done (Steps 3–4), and `/darin` smoke test passes. You do not need to run ingest, insights, or plan before declaring success.
+
+**Quick aha (optional, ~2 min):** show the product working without waiting for customer research:
+
+```
+/darin insights docs
+```
+
+Point at `README.md` in the project repo. Darin compares the copy to `PRODUCT.md` and `STRATEGY.md` and flags gaps — fastest way to see insights in action after init.
+
+Optional follow-up tests (core loop, in order):
 
 ```
 /darin ingest [paste a short customer note or path to a file]
-/darin shape [a problem the user cares about]
+/darin insights docs
+/darin plan [a problem the user cares about]
 ```
 
 ## Step 7: Close — tell the user
@@ -242,7 +257,12 @@ Same workspace works from every repo for this product:
   export DARIN_SLUG=<slug>   # optional, in shell profile
   or set active_workspace in ~/.darin/config.json
 
-Commands: /darin ingest | shape | prioritize | spec | review
+Commands: /darin init | ingest | insights | plan | prioritize | review
+
+Quick aha: /darin insights docs  (compare README.md to your product memory)
+
+When you want to go deeper, run the core loop in order:
+  ingest → insights → plan
 ```
 
 ## Multi-repo setup (if user has multiple code repos)
@@ -280,6 +300,6 @@ After install, before any Darin command:
 1. Run `node .cursor/skills/darin/scripts/workspace.mjs --json` to resolve `workspace_root`
 2. Run `node .cursor/skills/darin/scripts/context.mjs` to load PRODUCT + STRATEGY
 
-When the user invokes a sub-command (`/darin shape`, etc.), read `.cursor/skills/darin/reference/<command>.md` next.
+When the user invokes a sub-command (`/darin ingest`, `/darin plan`, `/darin insights`, etc.), read `.cursor/skills/darin/reference/<command>.md` next.
 
 **Never** infer workspace from git root. **Never** promote one-off anecdotes to strategy without user confirmation — durable writes to `hypotheses/` or `STRATEGY.md` always get a confirm step.
