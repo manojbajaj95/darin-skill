@@ -11,7 +11,7 @@ name: release-please
 #
 # npm publish uses trusted publishing (OIDC) — no NPM_TOKEN secret needed.
 # One-time setup on npmjs.com: package "@getdarin/cli" → Settings → Trusted publishing
-# → GitHub Actions → repo manojbajaj95/ai-pm-skill, workflow release-please.yml.
+# → GitHub Actions → repo manojbajaj95/darin-skill, workflow release-please.yml.
 # Requires npm CLI >=11.5.1 (bundled with Node 24), hence node-version 24 below.
 # Note: OIDC can't bootstrap a package's first-ever publish — that one publish
 # has to happen manually (npm publish from a maintainer's machine) before the

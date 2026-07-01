@@ -35,7 +35,7 @@ Examples:
   darin install --scope=global --providers=claude -y
 
 Docs: https://getdarin.com
-Repo: https://github.com/manojbajaj95/ai-pm-skill
+Repo: https://github.com/manojbajaj95/darin-skill
 `);
 }
 
