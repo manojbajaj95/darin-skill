@@ -14,7 +14,7 @@ If you fetched this file by URL without cloning yet, companion files live in the
 
 - `INSTALL_FOR_AGENTS.md` — this file (start here)
 - `README.md` — user overview
-- `packages/cli/` — `npx darin install` npm CLI
+- `packages/cli/` — `npx @getdarin/cli install` npm CLI
 - `scripts/install.mjs` — install from clone
 - `.cursor/skills/darin/` — Cursor deploy (or build from `skill/` via `scripts/build.mjs`)
 
@@ -38,8 +38,8 @@ Darin supports **Cursor, Claude Code, Codex CLI, Gemini CLI, GitHub Copilot**, a
 From the user's project root:
 
 ```bash
-npx darin@latest install -y
-# or: npx darin install --providers=cursor,claude,codex -y
+npx @getdarin/cli@latest install -y
+# or: npx @getdarin/cli install --providers=cursor,claude,codex -y
 ```
 
 This installs the skill into detected harness folders and scaffolds `~/.darin/` if needed.

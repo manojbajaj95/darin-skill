@@ -12,7 +12,7 @@ Product memory lives in **`~/.darin/`** on your machine (markdown, no database).
 
 ```bash
 # Install the skill into your project (auto-detects harness)
-npx darin@latest install
+npx @getdarin/cli@latest install
 
 # Or from a clone of this repo
 git clone https://github.com/manojbajaj95/ai-pm-skill.git
@@ -63,7 +63,7 @@ Bare `/darin` recommends next steps from project signals.
 ### Agent-native (multi-harness)
 
 - Single **`/darin`** router with lazy-loaded playbooks
-- Installs via **`npx darin install`** or `scripts/install.mjs`
+- Installs via **`npx @getdarin/cli install`** or `scripts/install.mjs`
 - Pin shortcuts: `/darin pin plan` → `/plan`
 
 ## Where data lives
@@ -87,12 +87,12 @@ Nothing product-related is written into your git repos unless you ask.
 ### npm CLI (recommended)
 
 ```bash
-npx darin@latest install
-npx darin install --providers=cursor,claude,codex -y
-npx darin install --scope=global --providers=claude -y
+npx @getdarin/cli@latest install
+npx @getdarin/cli install --providers=cursor,claude,codex -y
+npx @getdarin/cli install --scope=global --providers=claude -y
 ```
 
-Published as [`darin`](https://www.npmjs.com/package/darin) on npm. Source in [`packages/cli`](packages/cli).
+Published as [`@getdarin/cli`](https://www.npmjs.com/package/@getdarin/cli) on npm. Source in [`packages/cli`](packages/cli).
 
 ### From this repo
 
@@ -140,7 +140,7 @@ Uses **[release-please](https://github.com/googleapis/release-please)** — see 
 2. Release Please opens a **Release PR** with `CHANGELOG.md` + version bump
 3. **Merge the PR** → GitHub Release + `npm publish` (`darin@x.y.z`)
 
-**Setup:** `NPM_TOKEN` GitHub secret. Enable **Allow GitHub Actions to create and approve pull requests** in repo Settings → Actions.
+**Setup:** trusted publishing (OIDC) — no `NPM_TOKEN` secret. On npmjs.com: package `@getdarin/cli` → Settings → Trusted publishing → GitHub Actions → this repo + `release-please.yml`. Also enable **Allow GitHub Actions to create and approve pull requests** in repo Settings → Actions. (First-ever publish of a new package can't use OIDC — that one has to be `npm publish`'d manually before trusted publishing can be configured.)
 
 Changelog: [`packages/cli/CHANGELOG.md`](packages/cli/CHANGELOG.md)
 
@@ -148,7 +148,7 @@ Changelog: [`packages/cli/CHANGELOG.md`](packages/cli/CHANGELOG.md)
 
 - **Product:** [getdarin.com](https://getdarin.com)
 - **Repo:** [github.com/manojbajaj95/ai-pm-skill](https://github.com/manojbajaj95/ai-pm-skill)
-- **npm:** [npmjs.com/package/darin](https://www.npmjs.com/package/darin)
+- **npm:** [npmjs.com/package/@getdarin/cli](https://www.npmjs.com/package/@getdarin/cli)
 - **Agent Skills spec:** [agentskills.io](https://agentskills.io/specification)
 
 ## License

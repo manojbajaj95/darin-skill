@@ -8,7 +8,7 @@
  *   node scripts/install.mjs --scope=global --providers=claude,codex
  *   node scripts/install.mjs --target=/path/to/project --providers=cursor
  *
- * Prefer: npx darin@latest install
+ * Prefer: npx @getdarin/cli@latest install
  */
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -22,7 +22,7 @@ function usage() {
 
 Usage:
   node scripts/install.mjs [options]
-  npx darin@latest install [options]
+  npx @getdarin/cli@latest install [options]
 
 Options:
   --providers=LIST   Comma-separated harnesses (default: auto-detect or cursor,claude-code,codex)
@@ -37,7 +37,7 @@ Providers:
 
 Examples:
   node scripts/install.mjs --providers=cursor,claude,codex -y
-  npx darin@latest install -y
+  npx @getdarin/cli@latest install -y
 `);
 }
 

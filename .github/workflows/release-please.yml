@@ -9,7 +9,13 @@ name: release-please
 # Commits must follow Conventional Commits: feat:, fix:, docs:, etc.
 # https://www.conventionalcommits.org/
 #
-# Secrets: NPM_TOKEN (npm automation token for package "darin")
+# npm publish uses trusted publishing (OIDC) — no NPM_TOKEN secret needed.
+# One-time setup on npmjs.com: package "@getdarin/cli" → Settings → Trusted publishing
+# → GitHub Actions → repo manojbajaj95/ai-pm-skill, workflow release-please.yml.
+# Requires npm CLI >=11.5.1 (bundled with Node 24), hence node-version 24 below.
+# Note: OIDC can't bootstrap a package's first-ever publish — that one publish
+# has to happen manually (npm publish from a maintainer's machine) before the
+# trusted publisher can be configured.
 
 on:
   push:
@@ -41,7 +47,7 @@ jobs:
       - uses: actions/setup-node@v4
         if: ${{ steps.release.outputs['packages/cli--release_created'] == 'true' }}
         with:
-          node-version: '20'
+          node-version: '24'
           registry-url: 'https://registry.npmjs.org'
 
       - name: Test CLI
@@ -54,9 +60,7 @@ jobs:
           node bin/darin.mjs install -y --target /tmp/darin-release-test --providers=cursor
           test -f /tmp/darin-release-test/.cursor/skills/darin/SKILL.md
 
-      - name: Publish to npm
+      - name: Publish to npm (trusted publishing / OIDC)
         if: ${{ steps.release.outputs['packages/cli--release_created'] == 'true' }}
         working-directory: packages/cli
         run: npm publish --access public --provenance
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

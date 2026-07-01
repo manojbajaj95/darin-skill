@@ -21,7 +21,7 @@ export function getSkillRepoRoot() {
   }
 
   throw new Error(
-    'Darin skill source not found. Try reinstalling: npx darin@latest install',
+    'Darin skill source not found. Try reinstalling: npx @getdarin/cli@latest install',
   );
 }
 

@@ -18,7 +18,7 @@ test('published CLI vendor bundle installs standalone (no monorepo fallback)', (
 
   // Copy only what npm ships (bin/lib/vendor/package.json) into a dir with no
   // ancestor `scripts/lib`. This can only succeed via the vendor bundle —
-  // exactly what a real `npx darin@latest install` gets after publish.
+  // exactly what a real `npx @getdarin/cli@latest install` gets after publish.
   const isolated = fs.mkdtempSync(path.join(os.tmpdir(), 'darin-cli-isolated-'));
   for (const entry of ['bin', 'lib', 'vendor', 'package.json']) {
     fs.cpSync(path.join(CLI_ROOT, entry), path.join(isolated, entry), { recursive: true });

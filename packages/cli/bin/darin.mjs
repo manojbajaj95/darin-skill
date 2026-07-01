@@ -30,8 +30,8 @@ Install options:
   -y, --yes          Skip confirmation (default when stdin is not a TTY)
 
 Examples:
-  npx darin@latest install
-  npx darin install --providers=cursor,claude,codex -y
+  npx @getdarin/cli@latest install
+  npx @getdarin/cli install --providers=cursor,claude,codex -y
   darin install --scope=global --providers=claude -y
 
 Docs: https://getdarin.com
