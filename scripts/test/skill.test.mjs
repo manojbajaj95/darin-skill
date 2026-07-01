@@ -18,12 +18,12 @@ const SCRIPTS = path.join(REPO_ROOT, 'skill', 'scripts');
 test('command metadata has stable order and table rows', () => {
   const meta = loadCommandMetadata(REPO_ROOT);
   const ids = commandIds(meta);
-  assert.equal(ids.length, 6);
+  assert.equal(ids.length, 5);
   assert.ok(ids.includes('prioritize'));
   const table = renderCommandsTable(meta);
-  assert.match(table, /`shape`/);
-  assert.match(table, /reference\/shape\.md/);
-  assert.equal(commandHint(meta).split(' · ').length, 6);
+  assert.match(table, /`plan`/);
+  assert.match(table, /reference\/plan\.md/);
+  assert.equal(commandHint(meta).split(' · ').length, 5);
 });
 
 test('ingest-route fails without active workspace', () => {
@@ -107,7 +107,7 @@ test('build expands commands table placeholder', async () => {
   const out = fs.mkdtempSync(path.join(os.tmpdir(), 'darin-build-'));
   const skillDir = buildProviderSkill({ repoRoot: REPO_ROOT, provider: PROVIDERS.cursor, destRoot: out });
   const skill = fs.readFileSync(path.join(skillDir, 'SKILL.md'), 'utf8');
-  assert.match(skill, /`shape`/);
+  assert.match(skill, /`plan`/);
   assert.doesNotMatch(skill, /\{\{commands_table\}\}/);
   assert.match(skill, /user-invocable: true/);
   assert.match(skill, /argument-hint:/);
