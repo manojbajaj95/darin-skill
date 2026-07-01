@@ -8,14 +8,10 @@ import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const VALID = new Set([
-  'init', 'ingest', 'discover', 'shape', 'plan', 'prioritize',
-  'spec', 'prep', 'critique', 'review',
-]);
-
 const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
 const META_PATH = path.join(SCRIPT_DIR, 'command-metadata.json');
 const meta = JSON.parse(fs.readFileSync(META_PATH, 'utf8'));
+const VALID = new Set(meta.order || Object.keys(meta).filter(k => k !== 'order'));
 
 /** Harness folders that may contain Darin + pin targets */
 const HARNESS_SKILL_DIRS = [
@@ -52,6 +48,20 @@ function skillRoots(cwd) {
   return [...roots];
 }
 
+function pinnedBody(darinRef, cmd, scriptsPath) {
+  return `# /${cmd}
+
+Shortcut for \`/darin ${cmd}\`.
+
+## Setup (required)
+
+1. Run \`node ${scriptsPath}/workspace.mjs --json\`, then \`node ${scriptsPath}/context.mjs\` (pass \`--slug\` when the user names a product). If \`NO_ACTIVE_WORKSPACE\` or \`NO_PRODUCT_MD\`, stop and follow \`${darinRef}/reference/init.md\`.
+2. Load \`${darinRef}/reference/${cmd}.md\` and follow it.
+3. Read at least one file under **workspace_root**: \`hypotheses/*.md\`, recent \`ingestion/\`, or \`stakeholders/*.md\`.
+4. Read \`${darinRef}/reference/pm.md\`.
+`;
+}
+
 function writeShortcut(skillsDir, cmd, pin) {
   const darinRef = darinSkillRef(skillsDir);
   if (!darinRef) return false;
@@ -60,9 +70,7 @@ function writeShortcut(skillsDir, cmd, pin) {
   fs.mkdirSync(dir, { recursive: true });
   const desc = meta[cmd]?.description || `Darin: ${cmd}`;
   const scriptsPath = `${darinRef}/scripts`;
-  const body = pin
-    ? `# /${cmd}\n\nShortcut for \`/darin ${cmd}\`.\n\nLoad \`${darinRef}/reference/${cmd}.md\` and follow it. Run \`node ${scriptsPath}/context.mjs\` first.\n`
-    : '';
+  const body = pin ? pinnedBody(darinRef, cmd, scriptsPath) : '';
   const content = `---\nname: ${cmd}\ndescription: "${desc.replace(/"/g, '\\"')}"\nuser-invocable: true\n---\n\n${body}`;
   fs.writeFileSync(path.join(dir, 'SKILL.md'), content);
   return true;

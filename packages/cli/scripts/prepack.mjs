@@ -27,7 +27,7 @@ function main() {
 
   copyDir(path.join(REPO_ROOT, 'skill'), path.join(VENDOR, 'skill'));
 
-  for (const file of ['build-skill.mjs', 'providers.mjs', 'install-core.mjs']) {
+  for (const file of ['commands.mjs', 'build-skill.mjs', 'providers.mjs', 'install-core.mjs']) {
     fs.copyFileSync(
       path.join(REPO_ROOT, 'scripts', 'lib', file),
       path.join(VENDOR, 'lib', file),

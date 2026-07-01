@@ -2,7 +2,9 @@
 
 **[getdarin.com](https://getdarin.com)** · **[GitHub](https://github.com/manojbajaj95/ai-pm-skill)**
 
-Darin is your **AI product manager** — an agent skill for **Cursor, Claude Code, Codex, Gemini CLI**, and other harnesses. Ingest research, track hypotheses, shape features, and plan with evidence-backed judgment.
+Product decisions get made, then their reasoning evaporates. Six months later someone asks "why did we build it this way?" and nobody remembers — so it gets rebuilt, re-argued, or reversed for no reason.
+
+Darin is an agent skill for **Cursor, Claude Code, Codex, Gemini CLI**, and other harnesses that keeps the **why** behind your product decisions: the evidence, the tradeoffs, the "we considered X but chose Y because Z." It ingests research, tracks hypotheses with provenance, and writes that reasoning down so it survives past the meeting where it was decided.
 
 Product memory lives in **`~/.darin/`** on your machine (markdown, no database). Your code repos stay clean.
 
@@ -47,9 +49,12 @@ Set `active_workspace` in `~/.darin/config.json` or `export DARIN_SLUG=acme`.
 |---------|---------|
 | `/darin init` | Product workspace + PRODUCT.md / STRATEGY.md |
 | `/darin ingest` | Route research into memory |
+| `/darin discover` | Plan a Mom Test-style discovery interview |
 | `/darin shape` | Problem → scoped feature brief |
 | `/darin plan` | Objective → six-block plan |
+| `/darin prioritize` | Adaptive prioritization (RICE, ICE, value/effort, …) |
 | `/darin spec` | PRD-lite / user stories |
+| `/darin prep` | Pre-meeting stakeholder brief |
 | `/darin critique` | Strategy alignment review |
 | `/darin review` | Weekly maintenance sweep |
 

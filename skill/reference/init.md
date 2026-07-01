@@ -13,8 +13,18 @@ Setup a **product workspace** under `~/.darin/workspaces/<slug>/`. Workspaces ar
         ├── PRODUCT.md
         ├── STRATEGY.md
         ├── source/
+        │   ├── interviews/
+        │   ├── meetings/
+        │   ├── market/
+        │   └── adhoc/
         ├── ingestion/
+        │   ├── interviews/
+        │   ├── meetings/
+        │   ├── market/
+        │   └── adhoc/
         ├── hypotheses/
+        ├── stakeholders/
+        ├── decisions/
         └── ...
 ```
 
@@ -49,11 +59,13 @@ Then `workspace.mjs --json` — confirm `workspace_root`.
 
 ## Step 2: Interview
 
-Same PM interview as before (stage, users, strategy, non-goals). Optional: ask which repos touch this product (landing, api, admin) and append paths to `manifest.json` `linked_repos` for reference only — **not** used for routing.
+Read and follow [reference/init-interview.md](init-interview.md). Cover stage, users, problem, vision, strategy, and non-goals before writing files.
 
 ## Step 3: Write files
 
 All writes go to `workspace_root` from `--json`. Never write PRODUCT.md into the code repo.
+
+Use `templates/PRODUCT.md` and `templates/STRATEGY.md` as scaffolds.
 
 ## Step 4: Close
 

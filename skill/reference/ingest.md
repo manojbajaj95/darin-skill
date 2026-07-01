@@ -10,14 +10,18 @@ Transcript, file path, paste, screenshot description, URL, or chat note. Target 
 
 Run `node {{scripts_path}}/ingest-route.mjs --json`. Write to **`paths.source_abs`** and **`paths.ingestion_abs`** (under `~/.darin/`), not the code repo.
 
+If the script reports `NO_ACTIVE_WORKSPACE`, stop and run `init` first.
+
 If shape is ambiguous, ask **one** question. Do not guess.
 
-| Shape | Examples |
-|-------|----------|
-| `interview` | Customer call, user research, sales discovery |
-| `meeting` | 1:1, roadmap review, kickoff, retro |
-| `market` | Competitor page, changelog, analyst note |
-| `adhoc` | Slack insight, founder hunch, quick observation |
+| Shape (classifier) | Storage directory | Examples |
+|--------------------|-------------------|----------|
+| `interview` | `interviews/` | Customer call, user research, sales discovery |
+| `meeting` | `meetings/` | 1:1, roadmap review, kickoff, retro |
+| `market` | `market/` | Competitor page, changelog, analyst note |
+| `adhoc` | `adhoc/` | Slack insight, founder hunch, quick observation |
+
+Paths use the **directory** column (plural where noted), e.g. `source/interviews/`, `ingestion/meetings/`.
 
 ## Step 2: Load before writing
 
@@ -25,13 +29,13 @@ Resolve `workspace_root` via `workspace.mjs --json`, then load from there:
 
 - `STRATEGY.md` at workspace root
 - Active `hypotheses/*.md` that the artifact might touch
-- Last 2–3 files in matching `ingestion/<shape>/`
+- Last 2–3 files in matching `ingestion/<directory>/` (see table above)
 - Relevant `stakeholders/<slug>.md` if a person is named
 
 ## Step 3: Write (in order)
 
-1. **`source/<shape>/YYYY-MM-DD-<slug>.md`** — immutable copy of the original (or faithful transcript). Never edit after write.
-2. **`ingestion/<shape>/YYYY-MM-DD-<slug>.md`** — synthesis with tagged observations:
+1. **`source/<directory>/YYYY-MM-DD-<slug>.md`** — immutable copy of the original (or faithful transcript). Never edit after write.
+2. **`ingestion/<directory>/YYYY-MM-DD-<slug>.md`** — synthesis with tagged observations:
    - `(observation)` — what was said or shown
    - `(interpretation)` — what it might mean
    - `(hypothesis)` — testable belief suggested

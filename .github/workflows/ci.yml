@@ -30,5 +30,8 @@ jobs:
           node bin/darin.mjs install -y --target /tmp/darin-ci-test --providers=cursor
           test -f /tmp/darin-ci-test/.cursor/skills/darin/SKILL.md
 
+      - name: Run skill unit tests
+        run: npm test
+
       - name: Build skill dist
         run: node scripts/build.mjs --providers=cursor,claude-code,codex

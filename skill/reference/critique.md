@@ -6,7 +6,7 @@ Strategy alignment review: bets vs evidence vs work.
 
 - `PRODUCT.md`, `STRATEGY.md`
 - All active `hypotheses/*.md`
-- Recent decisions if `decisions/` exists
+- Recent decisions in `decisions/` (if any)
 - Optional: scan git changed files or user-supplied backlog
 
 ## Step 2: Score dimensions (qualitative)

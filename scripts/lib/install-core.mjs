@@ -35,6 +35,7 @@ export async function confirm(message) {
   return new Promise(resolve => {
     process.stdin.setEncoding('utf8');
     process.stdin.once('data', data => {
+      process.stdin.pause();
       resolve(/^y(es)?$/i.test(String(data).trim()));
     });
   });

@@ -157,6 +157,7 @@ export function ensureWorkspaceScaffold(slug, meta = {}) {
     'knowledge/product/features',
     'maintenance/log',
     'critique',
+    'decisions',
   ];
   for (const d of dirs) {
     fs.mkdirSync(path.join(root, d), { recursive: true });

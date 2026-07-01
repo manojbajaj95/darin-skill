@@ -22,6 +22,12 @@ Status: candidate | proposed | confirmed | rejected
 
 [How we would validate or falsify]
 
+## Success metrics
+
+| Metric | Target | Source |
+|--------|--------|--------|
+| | | |
+
 ## Decision trigger
 
 [What evidence would prompt a ship / kill / pivot decision]

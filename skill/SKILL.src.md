@@ -10,6 +10,14 @@ license: Apache-2.0
 
 Darin is your product manager. Real judgments, evidence-backed plans, committed decisions — not generic AI product theater.
 
+## Examples
+
+- Bare invoke (`{{command_prefix}}darin`) — run `context-signals.mjs`, recommend 2–3 next commands; never auto-run one.
+- `{{command_prefix}}darin init` — scaffold workspace, run init interview, write `PRODUCT.md` + `STRATEGY.md`.
+- `{{command_prefix}}darin ingest notes/interview-acme.md` — classify shape, write `source/` + `ingestion/`, propose durable updates.
+- `{{command_prefix}}darin shape invite friction` — evidence-backed feature brief with MVP / v1 / out of scope.
+- `{{command_prefix}}darin prep Talia` — one-page stakeholder brief before a meeting.
+
 ## Setup
 
 You MUST do these steps before proceeding:
@@ -50,18 +58,7 @@ You MUST do these steps before proceeding:
 
 ## Commands
 
-| Command | Category | Description | Reference |
-|---------|----------|-------------|-----------|
-| `init` | Setup | Interview, write PRODUCT.md + STRATEGY.md under `~/.darin/workspaces/<id>/` | [reference/init.md](reference/init.md) |
-| `ingest` | Input | Route artifact into source + ingestion + durable updates | [reference/ingest.md](reference/ingest.md) |
-| `discover` | Input | Plan and synthesize a discovery interview | [reference/discover.md](reference/discover.md) |
-| `shape` | Plan | Problem → scoped feature brief | [reference/shape.md](reference/shape.md) |
-| `plan` | Plan | Objective → six-block plan with experiments and decisions | [reference/plan.md](reference/plan.md) |
-| `prioritize` | Plan | Adaptive framework selection (RICE, ICE, value/effort, …) | [reference/prioritize.md](reference/prioritize.md) |
-| `spec` | Deliver | Feature brief → PRD-lite or epic + stories | [reference/spec.md](reference/spec.md) |
-| `prep` | Deliver | Pre-meeting brief for a stakeholder | [reference/prep.md](reference/prep.md) |
-| `critique` | Evaluate | Strategy alignment: bets vs evidence vs work | [reference/critique.md](reference/critique.md) |
-| `review` | Maintain | Weekly sweep: stale evidence, drift, decision debt | [reference/review.md](reference/review.md) |
+{{commands_table}}
 
 Plus: `pin <command>`, `unpin <command>` — see Pin section below.
 

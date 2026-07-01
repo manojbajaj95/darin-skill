@@ -63,6 +63,17 @@ function today() {
 
 const args = parseIngestArgs(process.argv);
 const storageRoot = workspaceRoot(args);
+
+if (!storageRoot) {
+  const err = { error: 'NO_ACTIVE_WORKSPACE', message: 'Run `/darin init` or set active_workspace in ~/.darin/config.json' };
+  if (args.json) {
+    console.log(JSON.stringify(err, null, 2));
+  } else {
+    console.error(err.message);
+  }
+  process.exit(1);
+}
+
 const { shape, confidence } = classify(args.text, args.hint);
 const slug = slugFrom(args.text, args.file);
 const date = today();

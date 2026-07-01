@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { COMMAND_HINT, PROVIDERS, SKILL_NAME, scriptsRelPath } from './providers.mjs';
+import { loadCommandMetadata, renderCommandsTable } from './commands.mjs';
 
 const OPTIONAL_FIELDS = new Set([
   'user-invocable',
@@ -82,11 +83,20 @@ function emitFrontmatter(fields, allowedFields, provider) {
   return `${lines.join('\n')}\n`;
 }
 
+function expandSkillBody(body, provider, repoRoot) {
+  const meta = loadCommandMetadata(repoRoot);
+  return replacePlaceholders(
+    body.replace('{{commands_table}}', renderCommandsTable(meta)),
+    provider,
+  );
+}
+
 function replacePlaceholders(text, provider) {
   const scriptsPath = scriptsRelPath(provider);
   return text
     .replaceAll('{{scripts_path}}', scriptsPath)
     .replaceAll('{{command_prefix}}', provider.commandPrefix)
+    .replaceAll('{{command_hint}}', COMMAND_HINT)
     .replaceAll('[{{command_hint}}]', `[${COMMAND_HINT}]`);
 }
 
@@ -115,7 +125,7 @@ export function buildProviderSkill({ repoRoot, provider, destRoot }) {
 
   const allowed = ['name', 'description', ...provider.frontmatterFields];
   const frontmatter = emitFrontmatter(fields, allowed, provider);
-  const skillBody = replacePlaceholders(body, provider);
+  const skillBody = expandSkillBody(body, provider, repoRoot);
 
   const skillDir = path.join(destRoot, provider.configDir, 'skills', SKILL_NAME);
   fs.rmSync(skillDir, { recursive: true, force: true });

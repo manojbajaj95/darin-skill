@@ -2,11 +2,11 @@
  * AI harness targets for Darin skill installs.
  * Paths follow the Agent Skills spec and Impeccable's harness layout.
  */
+import { commandHint, loadCommandMetadata } from './commands.mjs';
 
 export const SKILL_NAME = 'darin';
 
-export const COMMAND_HINT =
-  'init · ingest · discover · shape · plan · prioritize · spec · prep · critique · review';
+export const COMMAND_HINT = commandHint(loadCommandMetadata());
 
 /** @typedef {{ id: string, configDir: string, displayName: string, commandPrefix: string, frontmatterFields: string[], globalSkillsDir?: string }} Provider */
 
@@ -17,7 +17,7 @@ export const PROVIDERS = {
     configDir: '.cursor',
     displayName: 'Cursor',
     commandPrefix: '/',
-    frontmatterFields: ['license', 'allowed-tools'],
+    frontmatterFields: ['user-invocable', 'argument-hint', 'license', 'allowed-tools'],
     globalSkillsDir: '.cursor/skills',
   },
   'claude-code': {
@@ -65,7 +65,7 @@ export const PROVIDERS = {
     configDir: '.pi',
     displayName: 'Pi',
     commandPrefix: '/',
-    frontmatterFields: ['license', 'allowed-tools'],
+    frontmatterFields: ['user-invocable', 'argument-hint', 'license', 'allowed-tools'],
     globalSkillsDir: '.pi/skills',
   },
   kiro: {
