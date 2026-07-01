@@ -43,7 +43,7 @@ Uses [trusted publishing (OIDC)](https://docs.npmjs.com/trusted-publishers) — 
 **One-time setup**, after the package exists on npm:
 
 1. npmjs.com → package `@getdarin/cli` → **Settings → Trusted publishing** → GitHub Actions
-2. Repo: `manojbajaj95/ai-pm-skill`, workflow: `release-please.yml`, environment: blank
+2. Repo: `manojbajaj95/darin-skill`, workflow: `release-please.yml`, environment: blank
 
 **Bootstrapping caveat:** OIDC cannot publish a package's first-ever version — npm requires the package to already exist before a trusted publisher can be attached to it. The very first `darin@x.y.z` must be published manually (`npm publish --access public --provenance` from a maintainer's machine, logged in with 2FA/OTP as needed). Every release after that goes through CI via OIDC.
 

@@ -22,7 +22,7 @@
   },
   "keywords": [
     "darin",
-    "ai-pm-skill",
+    "darin-skill",
     "ai-product-manager",
     "product-management",
     "cursor",
@@ -33,11 +33,11 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/manojbajaj95/ai-pm-skill.git",
+    "url": "git+https://github.com/manojbajaj95/darin-skill.git",
     "directory": "packages/cli"
   },
   "bugs": {
-    "url": "https://github.com/manojbajaj95/ai-pm-skill/issues"
+    "url": "https://github.com/manojbajaj95/darin-skill/issues"
   },
   "homepage": "https://getdarin.com"
 }

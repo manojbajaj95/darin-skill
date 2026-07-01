@@ -8,9 +8,9 @@ Read this entire file, then follow the steps in order. Ask the user questions wh
 
 **Darin** is an agent skill that acts as a product manager: ingest research, track hypotheses, shape features, and maintain strategy alignment. It is **not** tied to a git repo — one workspace slug (e.g. `acme`) is shared across landing, API, mobile, and monorepo checkouts.
 
-**Repo:** [github.com/manojbajaj95/ai-pm-skill](https://github.com/manojbajaj95/ai-pm-skill) · **Website:** [getdarin.com](https://getdarin.com)
+**Repo:** [github.com/manojbajaj95/darin-skill](https://github.com/manojbajaj95/darin-skill) · **Website:** [getdarin.com](https://getdarin.com)
 
-If you fetched this file by URL without cloning yet, companion files live in the **ai-pm-skill** repo:
+If you fetched this file by URL without cloning yet, companion files live in the **darin-skill** repo:
 
 - `INSTALL_FOR_AGENTS.md` — this file (start here)
 - `README.md` — user overview
@@ -47,8 +47,8 @@ This installs the skill into detected harness folders and scaffolds `~/.darin/` 
 ### Option B — Install from repo clone
 
 ```bash
-git clone https://github.com/manojbajaj95/ai-pm-skill.git /tmp/ai-pm-skill
-cd /tmp/ai-pm-skill
+git clone https://github.com/manojbajaj95/darin-skill.git /tmp/darin-skill
+cd /tmp/darin-skill
 node scripts/install.mjs --target /path/to/user-repo --providers=cursor,claude,codex,gemini -y
 ```
 
@@ -66,7 +66,7 @@ node scripts/install.mjs --scope=global --providers=claude,codex -y
 
 ### Option C — Cursor only (legacy)
 
-From the ai-pm-skill repo root:
+From the darin-skill repo root:
 
 ```bash
 ./scripts/install-cursor.sh
@@ -95,8 +95,8 @@ Each harness uses the same scripts under its own `skills/darin/scripts/` path.
 ### Option E — Install from a git URL (build only)
 
 ```bash
-git clone https://github.com/manojbajaj95/ai-pm-skill.git /tmp/ai-pm-skill
-cd /tmp/ai-pm-skill
+git clone https://github.com/manojbajaj95/darin-skill.git /tmp/darin-skill
+cd /tmp/darin-skill
 node scripts/build.mjs --providers=cursor,claude-code,codex
 # Copy from dist/<provider>/ into the user's project harness folders
 ```
