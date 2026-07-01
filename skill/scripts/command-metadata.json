@@ -2,39 +2,33 @@
   "order": [
     "init",
     "ingest",
-    "shape",
+    "plan",
     "prioritize",
-    "spec",
     "review"
   ],
   "init": {
     "category": "Setup",
-    "description": "Interview, write PRODUCT.md + STRATEGY.md under `~/.darin/workspaces/<id>/`",
+    "description": "Short interview, write PRODUCT.md + STRATEGY.md (north star + goals) under `~/.darin/workspaces/<id>/`",
     "argumentHint": ""
   },
   "ingest": {
-    "category": "Input",
-    "description": "Route artifact into source + ingestion + durable updates; also plans discovery interviews",
+    "category": "Capture",
+    "description": "File something you learned into memory and note what it might mean; also helps plan customer calls",
     "argumentHint": "[file path, paste, or description]"
   },
-  "shape": {
+  "plan": {
     "category": "Plan",
-    "description": "Turn a problem or objective into a scoped feature brief with hypotheses and metrics",
-    "argumentHint": "[feature, problem area, or objective]"
+    "description": "Turn a problem or goal into a scoped brief: build now / next / skip",
+    "argumentHint": "[feature, problem area, or goal]"
   },
   "prioritize": {
     "category": "Plan",
-    "description": "Choose and apply the right prioritization framework for your stage and context",
-    "argumentHint": "[backlog or decision context]"
-  },
-  "spec": {
-    "category": "Deliver",
-    "description": "Optional: feature brief to PRD-lite with user stories and acceptance criteria",
-    "argumentHint": "[feature slug or name]"
+    "description": "Pick the right way to order competing work and apply it",
+    "argumentHint": "[list or decision context]"
   },
   "review": {
     "category": "Maintain",
-    "description": "Weekly maintenance sweep for stale evidence, strategy drift, and alignment",
+    "description": "Weekly sweep for stale evidence and drift from your goals",
     "argumentHint": ""
   }
 }

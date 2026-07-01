@@ -14,11 +14,11 @@ Run this conversation during `init` Step 2. Ask in order; skip what the user alr
 - **What pain exists today?** — specific, not generic "inefficiency"
 - **Why now?** — what changed (market, regulation, behavior, tech)
 
-## 3. Strategy
+## 3. Goals
 
-- **North-star metric** — one metric + how it is defined
-- **Current bets** — 2–3 things you are deliberately investing in this cycle
-- **Non-goals** — explicitly out of scope (protects against scope creep)
+- **North star** — the one number that tells you the product is working, and how you'd define it
+- **What you're focused on** — 2–3 things you're deliberately putting effort into this cycle
+- **What you're not doing** — things you're explicitly leaving out (keeps scope from creeping)
 - **Constraints** — team size, runway, platform, compliance, dependencies
 
 ## 4. Anything else worth capturing?
@@ -30,6 +30,6 @@ Optional, one open-ended question: vision, things to avoid becoming, known stake
 Map answers into:
 
 - `templates/PRODUCT.md` → `PRODUCT.md` (Stage, Users, Problem, Notes)
-- `templates/STRATEGY.md` → `STRATEGY.md` (North-star, bets, non-goals, constraints)
+- `templates/STRATEGY.md` → `STRATEGY.md` (north star, what you're focused on, what you're not doing, constraints)
 
 Do not invent facts. Mark gaps **Open question** and offer `/darin ingest` as a follow-up.

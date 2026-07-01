@@ -1,27 +1,27 @@
-# Hypothesis: [slug]
+# What we're betting on: [slug]
 
-Status: candidate | proposed | confirmed | rejected
+Status: new idea | worth watching | confirmed | ruled out
 
-## Statement
+## The bet
 
-[We believe … for … we will see …]
+[We think … for … and if we're right we'll see …]
 
-## Evidence for
+## Signs we're right
 
-- [claim] — (source: file or who said it, date)
+- [what we saw] — (source: file or who said it, date)
 
-## Evidence against
+## Signs we're wrong
 
-- [claim] — (source: file or who said it, date)
+- [what we saw] — (source: file or who said it, date)
 
-## Test
+## How we'd know for sure
 
-[How we would validate or falsify]
+[How we'd confirm or rule this out]
 
-## Decision trigger
+## What would make us act
 
-[What evidence would prompt a ship / kill / pivot decision]
+[The evidence that would push us to build, drop, or change direction]
 
-## Reversal condition
+## What would reopen this
 
-[What would reopen this bet]
+[What would make us revisit after we've decided]

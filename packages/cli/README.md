@@ -1,6 +1,6 @@
 # @getdarin/cli
 
-Installer for **Darin** — an AI product manager skill for Cursor, Claude Code, Codex, Gemini CLI, and other Agent Skills harnesses. Darin ingests research, tracks hypotheses with sources cited, and keeps the *why* behind product decisions so it survives past the meeting where it was decided.
+Installer for **Darin** — an AI product manager skill for Cursor, Claude Code, Codex, Gemini CLI, and other Agent Skills harnesses. Darin files what you learn into memory with sources cited, and keeps the *why* behind product decisions so it survives past the meeting where it was decided.
 
 **[getdarin.com](https://getdarin.com)** · **[GitHub](https://github.com/manojbajaj95/darin-skill)**
 
@@ -17,7 +17,7 @@ Then in your harness:
 ```
 /darin init
 /darin ingest
-/darin shape
+/darin plan
 ```
 
 | Harness | Invoke |

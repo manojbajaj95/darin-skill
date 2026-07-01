@@ -1,8 +1,8 @@
-# Feature brief: [name]
+# Brief: [name]
 
 ## Problem
 
-[Evidence-backed. Cite ingestion/ and hypotheses/ files.]
+[Evidence-backed. Cite the files it's drawn from, e.g. `ingestion/...`.]
 
 ## Opportunity
 
@@ -10,13 +10,13 @@
 
 ## Scope
 
-| MVP | v1 | Out of scope |
-|-----|-----|--------------|
+| Build now | Next | Out of scope |
+|-----------|------|--------------|
 | | | |
 
-## Hypotheses to test
+## What we're betting on
 
-- [ ] [hypothesis] — evidence: [file it's backed by, or "none yet"]
+- [ ] [The thing we believe will happen] — how we'll know: [signal/metric] — evidence: [file, or "none yet"]
 - [ ]
 - [ ]
 
@@ -30,8 +30,8 @@
 
 ## Open questions
 
-## Decision needed from PM
+## Decision needed
 
-## Suggested next command
+## Suggested next step
 
-`/darin spec [slug]` (optional) | `/darin prioritize`
+`/darin prioritize`
