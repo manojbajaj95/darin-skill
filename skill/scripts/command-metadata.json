@@ -2,39 +2,39 @@
   "order": [
     "init",
     "ingest",
-    "plan",
     "insights",
-    "prioritize",
+    "roadmap",
+    "next",
     "review"
   ],
   "init": {
     "category": "Setup",
-    "description": "Short interview, write PRODUCT.md + STRATEGY.md (north star + goals) under `~/.darin/workspaces/<id>/`",
+    "description": "Short interview, write PRODUCT.md + STRATEGY.md (goals), nudge harness automation",
     "argumentHint": ""
   },
   "ingest": {
     "category": "Capture",
-    "description": "File something you learned into memory and note what it might mean; also helps plan customer calls",
+    "description": "File customer research, metrics, or notes into memory (not part of the loop)",
     "argumentHint": "[file path, paste, or description]"
-  },
-  "plan": {
-    "category": "Plan",
-    "description": "Turn a problem or goal into a scoped brief: build now / next / skip",
-    "argumentHint": "[feature, problem area, or goal]"
   },
   "insights": {
     "category": "Analyze",
-    "description": "Compare product surface in your codebase to Darin memory — misalignments, gaps, improvements",
-    "argumentHint": "[recipe or natural phrase] — landing · pricing · onboarding · docs · seo"
+    "description": "Compare product to memory; one file per suggestion",
+    "argumentHint": "[optional focus]"
   },
-  "prioritize": {
+  "roadmap": {
     "category": "Plan",
-    "description": "Pick the right way to order competing work and apply it",
-    "argumentHint": "[list or decision context]"
+    "description": "Rank latest suggestions and write brief for the top item",
+    "argumentHint": "[optional item slug]"
+  },
+  "next": {
+    "category": "Plan",
+    "description": "Top roadmap item — hand off to your coding agent (auto-runs roadmap if stale)",
+    "argumentHint": "[optional item override]"
   },
   "review": {
     "category": "Maintain",
-    "description": "Weekly sweep for stale evidence and drift from your goals",
+    "description": "Optional sweep for stale evidence and drift from your goals",
     "argumentHint": ""
   }
 }

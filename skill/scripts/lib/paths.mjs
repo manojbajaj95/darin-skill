@@ -154,6 +154,7 @@ export function ensureWorkspaceScaffold(slug, meta = {}) {
     'hypotheses',
     'features',
     'insights',
+    'roadmap',
     'maintenance/log',
   ];
   for (const d of dirs) {
