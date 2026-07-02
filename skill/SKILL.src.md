@@ -20,6 +20,7 @@ Built for small teams: three things you do all the time (`init`, `ingest`, `plan
 - `{{command_prefix}}darin plan invite friction` — turn a problem into a scoped brief: what to build now, what's next, what to skip.
 - `{{command_prefix}}darin insights landing page` — compare landing page source in this repo to your product memory; same for `pricing`, `onboarding`, `docs`, `seo`.
 - `{{command_prefix}}darin insights` — after init: compare a product surface in the repo to product memory; Darin discovers what to check
+- `{{command_prefix}}darin digest invite friction` — sum up everything Darin knows about a topic from memory alone — themes, confirmed evidence, open questions; no codebase scan.
 
 ## Setup
 
@@ -57,7 +58,7 @@ Before proceeding:
 
 1. **No argument**: run `node {{scripts_path}}/context-signals.mjs` once. If `NO_PRODUCT_MD`, you are already in init. Otherwise lead with **2–3 recommended next steps** with one-line reasons from the signals, then the full menu above. Never auto-run a command.
 2. **First word matches a command**: load its reference and follow it. Everything after the command name is the target.
-3. **Intent maps clearly to one command** (e.g. "turn this interview into a feature" → `plan`, "what should I build first" → `prioritize`, "does our landing page match our ICP" → `insights`): load that reference and proceed.
+3. **Intent maps clearly to one command** (e.g. "turn this interview into a feature" → `plan`, "what should I build first" → `prioritize`, "does our landing page match our ICP" → `insights`, "what do we know about X" → `digest`): load that reference and proceed.
 4. **No clear match**: apply setup and the principles above. Use the full argument as context.
 
 If `init` was invoked as a blocker by another command, finish init, re-run context, then resume the original command and target.

@@ -25,6 +25,7 @@ Setup a **product workspace** under `~/.darin/workspaces/<slug>/`. Workspaces ar
         ├── hypotheses/
         ├── features/
         ├── insights/
+        ├── digests/
         └── maintenance/log/
 ```
 

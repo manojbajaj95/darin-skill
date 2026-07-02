@@ -91,6 +91,7 @@ Set it with `active_workspace` in `~/.darin/config.json`, or `export DARIN_SLUG=
 | `/darin ingest`     | File something you learned into memory, or plan a customer call               |
 | `/darin plan`       | Turn a problem or goal into a scoped brief: build now / next / skip           |
 | `/darin insights`   | Compare codebase surfaces (landing, pricing, onboarding, …) to product memory |
+| `/darin digest`     | Sum up everything Darin knows (or one topic) from memory — no codebase scan   |
 | `/darin prioritize` | Quick way to order competing work (RICE, ICE, value/effort, …)                |
 | `/darin review`     | Weekly check-in for stale evidence and drift from your goals                  |
 
@@ -115,7 +116,8 @@ Everything lives under `~/.darin/` on your own machine:
         ├── source/
         ├── ingestion/
         ├── hypotheses/
-        └── insights/
+        ├── insights/
+        └── digests/
 ```
 
 None of this touches your git repos unless you specifically ask it to.

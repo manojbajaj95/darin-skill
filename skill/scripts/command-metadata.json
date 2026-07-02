@@ -4,6 +4,7 @@
     "ingest",
     "plan",
     "insights",
+    "digest",
     "prioritize",
     "review"
   ],
@@ -26,6 +27,11 @@
     "category": "Analyze",
     "description": "Compare product surface in your codebase to Darin memory — misalignments, gaps, improvements",
     "argumentHint": "[recipe or natural phrase] — landing · pricing · onboarding · docs · seo"
+  },
+  "digest": {
+    "category": "Analyze",
+    "description": "Sum up everything Darin knows about your product, or one topic — themes, confirmed evidence, open questions — from memory only, no codebase scan",
+    "argumentHint": "[optional topic to focus on]"
   },
   "prioritize": {
     "category": "Plan",
